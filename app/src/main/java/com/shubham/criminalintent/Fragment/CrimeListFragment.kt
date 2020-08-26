@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shubham.criminalintent.Model.Crime
 import com.shubham.criminalintent.Model.CrimeListViewModel
 import com.shubham.criminalintent.R
+import java.text.DateFormat
 
 private const val TAG = "CrimeListFragment"
 
@@ -58,7 +59,9 @@ class CrimeListFragment:Fragment() {
         fun bind(crime:Crime){
             this.crime = crime
             titleTextView.text = crime.title
-            dateTextView.text = crime.date.toString()
+            var dateFormat:DateFormat = DateFormat.getDateInstance()
+
+            dateTextView.text = dateFormat.format(crime.date)
 
 
             solvedImageView.visibility = if (crime.isSolved){
